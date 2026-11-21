@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f3ef; /* Creme quente (elimina o brilho branco) */
+    color: #292524;            /* Carvão quente de leitura confortável */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #eae6df; /* Areia suave */
+    color: #1c1917;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid #d6d3cd;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    color: #0f766e;            /* Verde petróleo moderno */
+}
+
+header p {
+    color: #57534e;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.intro h2 {
+    margin-bottom: 0.5rem;
+    color: #1c1917;
+}
+
+.intro p {
+    color: #57534e;
+}
+
+.btn-principal {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: #c2593f; /* Terracota moderno (estilo Claude) */
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-principal:hover {
+    background-color: #a84830;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: #fcfbf9;       /* Marfim fosco suave */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e7e5e4;
+    box-shadow: 0 2px 6px rgba(41, 37, 36, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card h3 {
+    color: #0f766e;            /* Verde petróleo */
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    color: #57534e;            /* Cinza quente sem cansaço visual */
+}
+
+.card button {
+    padding: 0.6rem 1rem;
+    background-color: #0f766e; /* Botão verde petróleo */
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.card button:hover {
+    background-color: #115e59;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #eae6df;
+    color: #57534e;
+    font-size: 0.9rem;
+    border-top: 1px solid #d6d3cd;
+}
