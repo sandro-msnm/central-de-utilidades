@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Utilidades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Central de Utilidades</h1>
+        <p>Ferramentas simples e práticas para resolver situações do dia a dia.</p>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Escolha uma ferramenta para iniciar</h2>
+            <p>Clique no botão abaixo para abrir o menu interativo ou selecione uma calculadora diretamente.</p>
+            <button class="btn-principal" onclick="abrirMenuPrincipal()">Abrir Menu de Ferramentas</button>
+        </section>
+
+        <section class="cards">
+            <div class="card">
+                <h3>Calculadora de Descontos</h3>
+                <p>Descubra quanto você economiza e o preço final de um produto.</p>
+                <button onclick="executarCalculadoraDescontos()">Calcular Desconto</button>
+            </div>
+
+            <div class="card">
+                <h3>Calculadora de Parcelas</h3>
+                <p>Calcule o valor de cada parcela de uma compra sem juros.</p>
+                <button onclick="executarCalculadoraParcelas()">Calcular Parcelas</button>
+            </div>
+
+            <div class="card">
+                <h3>Simulador de Investimentos</h3>
+                <p>Simule o crescimento de um investimento com aportes mensais.</p>
+                <button onclick="executarSimuladorInvestimentos()">Simular Investimento</button>
+            </div>
+
+            <div class="card">
+                <h3>Divisor de Despesas</h3>
+                <p>Some várias despesas e descubra quanto cada pessoa deve pagar.</p>
+                <button onclick="executarDivisorDespesas()">Dividir Despesas</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Central de Utilidades | Desenvolvido por <strong>Sandro Moretti Simão do Nascimento Mendes</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
