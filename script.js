@@ -138,49 +138,116 @@ function executarSimuladorInvestimentos() {
 }
 
 // ==========================================
-// D) DIVISOR DE DESPESAS (USO DE DO...WHILE)
+// D) DIVISOR DE DESPESAS (ENTREGA 2: ARRAYS E OBJETOS)
 // ==========================================
+
+// Função auxiliar para cadastrar e retornar o array de objetos de despesas
+function coletarDespesas() {
+    const listaDespesas = [];
+    let continuar = true;
+
+    do {
+        const descricao = prompt("Informe a descrição da despesa (ex: Mercado, Almoço):");
+
+        // Trata cancelamento pelo usuário
+        if (descricao === null) {
+            return null;
+        }
+
+        if (descricao.trim() === "") {
+            alert("Descrição inválida! Informe um nome para a despesa.");
+            continue;
+        }
+
+        const entradaValor = prompt(`Informe o valor de "${descricao.trim()}" (R$):`);
+
+        if (entradaValor === null) {
+            return null;
+        }
+
+        const valor = Number(entradaValor);
+
+        if (isNaN(valor) || valor <= 0) {
+            alert("Valor inválido! Informe um número maior que zero.");
+            continue;
+        }
+
+        // Cria o objeto da despesa e adiciona ao array
+        const despesa = {
+            descricao: descricao.trim(),
+            valor: valor
+        };
+        listaDespesas.push(despesa);
+
+        // Verifica se o usuário deseja cadastrar mais itens
+        const resposta = prompt("Deseja adicionar outra despesa? (S para Sim / N para Não)");
+        if (resposta === null || resposta.trim().toUpperCase() !== "S") {
+            continuar = false;
+        }
+
+    } while (continuar);
+
+    return listaDespesas;
+}
+
+// Função auxiliar que percorre o array de objetos e soma os valores
+function calcularTotalDespesas(listaDespesas) {
+    let total = 0;
+    for (let i = 0; i < listaDespesas.length; i++) {
+        total += listaDespesas[i].valor;
+    }
+    return total;
+}
+
+// Função auxiliar que percorre o array para gerar o texto de detalhamento
+function formatarDetalhamentoDespesas(listaDespesas) {
+    let detalhes = "";
+    for (let i = 0; i < listaDespesas.length; i++) {
+        detalhes += `- ${listaDespesas[i].descricao}: R$ ${listaDespesas[i].valor.toFixed(2)}\n`;
+    }
+    return detalhes;
+}
+
 function calcularValorPorPessoa(totalDespesas, quantidadePessoas) {
     return totalDespesas / quantidadePessoas;
 }
 
+// Função principal do Divisor de Despesas
 function executarDivisorDespesas() {
-    let totalDespesas = 0;
-    let valorDespesa = 0;
+    const despesas = coletarDespesas();
 
-    do {
-        const entrada = prompt("Informe o valor da despesa (R$) ou digite 0 para encerrar:");
-        
-        if (entrada === null) {
-            alert("Operação cancelada.");
-            return;
-        }
-
-        valorDespesa = Number(entrada);
-
-        if (isNaN(valorDespesa) || valorDespesa < 0) {
-            alert("Valor inválido! Digite um número positivo ou 0 para encerrar.");
-        } else if (valorDespesa > 0) {
-            totalDespesas += valorDespesa;
-        }
-    } while (valorDespesa !== 0);
-
-    if (totalDespesas === 0) {
-        alert("Nenhuma despesa foi informada.");
+    if (despesas === null) {
+        alert("Operação cancelada.");
         return;
     }
 
-    const quantidadePessoas = Number(prompt("Informe a quantidade de pessoas para dividir a conta:"));
+    if (despesas.length === 0) {
+        alert("Nenhuma despesa foi cadastrada.");
+        return;
+    }
+
+    const entradaPessoas = prompt("Informe a quantidade de pessoas para dividir a conta:");
+    
+    if (entradaPessoas === null) {
+        alert("Operação cancelada.");
+        return;
+    }
+
+    const quantidadePessoas = Number(entradaPessoas);
 
     if (isNaN(quantidadePessoas) || quantidadePessoas <= 0 || !Number.isInteger(quantidadePessoas)) {
         alert("Quantidade de pessoas inválida! Informe um número inteiro maior que zero.");
         return;
     }
 
+    const totalDespesas = calcularTotalDespesas(despesas);
     const valorPorPessoa = calcularValorPorPessoa(totalDespesas, quantidadePessoas);
+    const detalhamento = formatarDetalhamentoDespesas(despesas);
 
     alert(
         "RESULTADO - DIVISOR DE DESPESAS\n\n" +
+        "Detalhamento das despesas:\n" +
+        `${detalhamento}\n` +
         `Total das despesas: R$ ${totalDespesas.toFixed(2)}\n` +
         `Quantidade de pessoas: ${quantidadePessoas}\n` +
         `Valor por pessoa: R$ ${valorPorPessoa.toFixed(2)}`
